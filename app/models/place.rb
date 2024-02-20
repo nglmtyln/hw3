@@ -1,3 +1,3 @@
 class Place < ApplicationRecord
-  # talks to the "places" table
+  # connects to places table
 end

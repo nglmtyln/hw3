@@ -1,3 +1,3 @@
 class Entry < ApplicationRecord
-  # talks to the "posts" table
+  # connects to entry table
 end
