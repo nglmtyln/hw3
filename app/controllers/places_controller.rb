@@ -8,15 +8,12 @@ class PlacesController < ApplicationController
     @place = Place.find_by({"name" => params["name"]})
   end
 
-  # renders places/new with the new Place form
   def new
     @place = Place.new
   end
   
   def create
-    @place = Place.new
-    #assign user-entered form data to Place's columns
-    @place["name"] = params["name"]
+    @place = Place.new(params["name"])
     @place.save
     
     redirect_to "/places"
