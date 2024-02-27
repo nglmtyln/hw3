@@ -12,11 +12,12 @@
   </p>
   
    <p>
-    <label for="date">Date</label>
-    <input type="date" name="date" id="date">
+    <label for="posted_on">Posted On</label>
+    <input type="date" name="posted_on" id="posted_on">
   </p>
 
-  <%= form.hidden_field :place_id, value: @place.id %>
+
+  <input type = "hidden" name = "place_id" id ="place_id" value="<%= @entry["place_id"] %>" />
 
   <button>Submit</button>
 

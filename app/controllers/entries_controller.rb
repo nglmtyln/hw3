@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
 
-  
+
   def show
     @entry = Entry.find_by({"id" => params["id"]})
     @place = Place.find_by({"id" => @entry["place_id"]})
@@ -17,8 +17,8 @@ class EntriesController < ApplicationController
 
     
     @entry["title"] = params["title"]
-    @entry["desccription"] = params["description"]
-    @entry["posted on"] = params["posted on"]
+    @entry["description"] = params["description"]
+    @entry["posted_on"] = params["posted_on"]
 
     # assign relationship
     @entry["place_id"] = params["place_id"]
