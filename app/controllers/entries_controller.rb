@@ -1,33 +1,32 @@
 class EntriesController < ApplicationController
 
   
-  def new
-    # adding this because I think I need to, but not quite the same syntax
-    @place = Place.find_by(params[:place_id])
-    
+  def show
+    @entry = Entry.find_by({"id" => params["id"]})
+    @place = Place.find_by({"id" => @entry["place_id"]})
+  end
+
+  def new    
     @entry = Entry.new
+    # assign relationship 
+    @entry["place_id"] = params["place_id"]
   end
   
   def create
-    # adding this because I think I need to, but not quite the same syntax
-    @place = Place.find_by(params[:place_id])
-    
-    # @entry = Entry.new(params["entry"])
+    @entry = Entry.new
 
-    # adding because 
-    @entry = @place.entries.build(entry_params)
     
     @entry["title"] = params["title"]
     @entry["desccription"] = params["description"]
-    # how do we do timestamps for posted on?
     @entry["posted on"] = params["posted on"]
-   
-    place_name = params["place name"]
-    actual_place = Entry.find_by({"name" => place_name})
-    
+
+    # assign relationship
     @entry["place_id"] = params["place_id"]
+   
     @entry.save
-    redirect_to "/entries"
+
+
+    redirect_to "/places/#{@entry["place_id"]}"
   end
 
 end
